@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Resource Pack Tool</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Minecraft Resource Pack Tool</h1>
+    </header>
+
+    <main>
+        <div class="file-tree" id="fileTree"></div>
+        <div class="canvas-container">
+            <canvas id="drawingCanvas" width="256" height="256"></canvas>
+            <button onclick="downloadFrame()">Download Frame</button>
+        </div>
+
+        <div>
+            <button onclick="uploadFile()">Upload Model or Texture</button>
+            <input type="file" id="fileInput" onchange="handleFileUpload(event)" style="display: none;">
+        </div>
+
+        <div>
+            <button onclick="generateZip()">Generate Resource Pack</button>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
