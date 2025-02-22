@@ -45,3 +45,10 @@ button:hover {
 .file {
     margin-left: 20px;
 }
+
+// 试图修复canvas元素不显示的bug
+canvas {
+    display: block; /* 确保 canvas 为块级元素 */
+    max-width: 100%; /* 保证其响应式 */
+    height: auto;
+}
