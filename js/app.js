@@ -2,8 +2,26 @@
 function createFileTree() {
     const fileTree = document.getElementById("fileTree");
     const treeData = [
-        { name: "models", type: "folder", children: [{ name: "model1.json", type: "file" }] },
-        { name: "textures", type: "folder", children: [{ name: "texture.png", type: "file" }] }
+        {
+            name: "models", 
+            type: "folder", 
+            children: [
+                { 
+                    name: "model1.json", 
+                    type: "file"
+                }
+            ] 
+        },
+        {
+            name: "textures",
+            type: "folder",
+            children: [
+                {
+                    name: "texture.png",
+                    type: "file" 
+                }
+            ]
+        }
     ];
     fileTree.innerHTML = generateTreeHTML(treeData);
 }
@@ -24,12 +42,40 @@ createFileTree();
 const canvas = document.getElementById('drawingCanvas');
 const ctx = canvas.getContext('2d');
 
-canvas.addEventListener('mousedown', (event) => {
-    const x = event.offsetX;
-    const y = event.offsetY;
-    ctx.fillStyle = 'black';
-    ctx.fillRect(x, y, 5, 5); // 在点击位置绘制小点
+window.addEventListener('load', () => {
+    const canvas = document.getElementById('drawingCanvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+        console.error('Canvas context not available');
+        return;
+    }
+    // 进行绘图操作
+
+    // 触摸版
+    canvas.addEventListener('touchstart', (event) => {
+        const x = event.touches[0].pageX - canvas.offsetLeft;
+        const y = event.touches[0].pageY - canvas.offsetTop;
+        ctx.fillStyle = 'black';
+        ctx.fillRect(x, y, 5, 5); // 在触摸位置绘制小点
+    });
+
+    canvas.addEventListener('touchmove', (event) => {
+        event.preventDefault(); // 防止滚动
+        const x = event.touches[0].pageX - canvas.offsetLeft;
+        const y = event.touches[0].pageY - canvas.offsetTop;
+        ctx.fillStyle = 'black';
+        ctx.fillRect(x, y, 5, 5);
+    });
+    
+    // 鼠标版
+    canvas.addEventListener('mousedown', (event) => {
+        const x = event.offsetX;
+        const y = event.offsetY;
+        ctx.fillStyle = 'black';
+        ctx.fillRect(x, y, 5, 5); // 在点击位置绘制小点
+    });
 });
+
 
 function downloadFrame() {
     const frameData = canvas.toDataURL(); // 获取绘制内容
