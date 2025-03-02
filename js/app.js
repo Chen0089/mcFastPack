@@ -42,15 +42,24 @@ createFileTree();
 const canvas = document.getElementById('drawingCanvas');
 const ctx = canvas.getContext('2d');
 
+// 设置画布的宽度和高度为 16x16 像素
+const gridSize = 16; // 画布为 16x16 像素
+
 window.addEventListener('load', () => {
     const canvas = document.getElementById('drawingCanvas');
     const ctx = canvas.getContext('2d');
     if (!ctx) {
         console.error('Canvas context not available');
         return;
+    }   
+    // 绘制 16x16 像素的画布，每个像素为一个 1x1 的矩形
+    for (let x = 0; x < gridSize; x++) {
+        for (let y = 0; y < gridSize; y++) {
+            // 设置颜色，这里可以根据条件来改变颜色
+            ctx.fillStyle = 'blue'; // 可以更改颜色
+            ctx.fillRect(x, y, 1, 1);  // 绘制一个 1x1 的像素
+        }
     }
-    // 进行绘图操作
-
     // 触摸版
     canvas.addEventListener('touchstart', (event) => {
         const x = event.touches[0].pageX - canvas.offsetLeft;
