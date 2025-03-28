@@ -4,7 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minecraft Resource Pack Tool</title>
-    <link rel="stylesheet" href="css/main.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            margin-top: 20px;
+        }
+
+        .canvas-container {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #fileTree {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .folder {
+            font-weight: bold;
+        }
+
+        .file {
+            margin-left: 20px;
+        }
+
+        canvas {
+            display: block; /* 确保 canvas 为块级元素 */
+            max-width: 100%; /* 保证其响应式 */
+            height: auto;
+            border: black;
+        }
+    </style>
 </head>
 <body>
     <header>
