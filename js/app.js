@@ -1,3 +1,27 @@
+// JIEJOE produce
+// b站主页：https://space.bilibili.com/3546390319860710
+const loading = {
+    container: document.querySelector(".loading"),
+    in(target) {
+        this.container.classList.remove("loading_out");
+        setTimeout(
+            () => {
+                window.location.href = target;
+            },
+            1000
+        )
+    },
+    out() {
+        this.container.classList.add("loading_out");
+    }
+};
+window.addEventListener(
+    "load",
+    () => {
+        loading.out();
+    }
+)
+
 // 文件树展示
 function createFileTree() {
     const fileTree = document.getElementById("fileTree");
@@ -77,13 +101,17 @@ window.addEventListener('load', () => {
     });
     
     // 鼠标版
-    canvas.addEventListener('mousedown', (event) => {
-        const x = event.offsetX;
-        const y = event.offsetY;
-        ctx.fillStyle = 'black';
-        ctx.fillRect(x, y, 5, 5); // 在点击位置绘制小点
-    });
-});
+    canvas.addEventListener(
+        'mousedown',
+        (event) => {
+            const x = event.offsetX;
+            const y = event.offsetY;
+            ctx.fillStyle = 'black';
+            ctx.fillRect(x, y, 5, 5); // 在点击位置绘制小点
+        }
+    );
+}
+);
 
 
 function downloadFrame() {
@@ -104,7 +132,10 @@ function handleFileUpload(event) {
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            console.log('File content:', e.target.result);
+            console.log(
+                'File content:',
+                e.target.result
+            );
         };
         reader.readAsText(file);  // 可以处理 JSON 文件
     }
@@ -116,15 +147,34 @@ function generateZip() {
     const zip = new JSZip();
 
     // 将绘制的内容作为 PNG 文件添加到 ZIP
-    zip.file("texture.png", canvas.toDataURL().split(',')[1], { base64: true });
+    zip.file(
+        "texture.png",
+        canvas.toDataURL().split(',')[1],
+        {
+            base64: true
+        }
+    );
     // 添加一个简单的 JSON 模型数据
-    zip.file("model.json", JSON.stringify({ example: "model data" }));
+    zip.file(
+        "model.json",
+        JSON.stringify(
+            {
+                example: "model data"
+            }
+        )
+    );
 
     // 生成 ZIP 文件并下载
-    zip.generateAsync({ type: "blob" }).then(function(content) {
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(content);
-        link.download = "resource_pack.zip";
-        link.click();
-    });
+    zip.generateAsync(
+        {
+            type: "blob" 
+        }
+    ).then(
+        function(content) {
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(content);
+            link.download = "resource_pack.zip";
+            link.click();
+        }
+    );
 }
