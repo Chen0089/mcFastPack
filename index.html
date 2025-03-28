@@ -2,71 +2,112 @@
   <head>
     <title>Minecraft快速制作资源包工具</title>
     <style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 20px;
-}
+        * {
+            padding: 0;
+            margin: 0;
+            font-size: 2vmin;
+        }
 
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-main {
-    margin-top: 20px;
-}
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            background-color: #171717;
+        }
 
-.canvas-container {
-    margin-bottom: 20px;
-}
+        .title {
+            font-family: sans-serif;
+            font-size: 10rem;
+            color: #17f700;
+            font-weight: 900;
+            cursor: pointer;
+        }
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-}
+        .title span {
+            font-size: 10rem;
+            color: #f7f7f7;
+        }
 
-button:hover {
-    background-color: #45a049;
-}
+        .loading {
+            position: fixed;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #f7f7f7;
+            z-index: 100000000;
+            transition: 1s ease;
+        }
 
-#fileTree {
-    margin-bottom: 20px;
-    font-size: 14px;
-}
+        .loading svg {
+            width: 5rem;
+            margin-bottom: 2rem;
+            overflow: visible;
+            transition: 0.3s ease;
+        }
 
-.folder {
-    font-weight: bold;
-}
+        .loading svg circle {
+            fill: none;
+            stroke: #171717;
+            stroke-width: 12;
+            stroke-dasharray: 160;
+            stroke-dashoffset: 160;
+            transform-origin: center;
+            animation: circle_rotate 3s ease-in infinite;
+        }
 
-.file {
-    margin-left: 20px;
-}
+        @keyframes circle_rotate {
+            0% {
+                transform: rotate(0deg);
+                stroke-dashoffset: 160;
+            }
 
-canvas {
-    display: block; /* 确保 canvas 为块级元素 */
-    max-width: 100%; /* 保证其响应式 */
-    height: auto;
-    border: black;
-}
+            100% {
+                transform: rotate(360deg);
+                stroke-dashoffset: -160;
+            }
+        }
+
+        .loading p {
+            font-family: sans-serif;
+            font-size: 2rem;
+            color: #171717;
+            font-weight: 900;
+            transition: 0.3s ease;
+        }
+
+        .loading_out {
+            transform: translateY(100%);
+        }
+
+        .loading_out svg,
+        .loading_out p {
+            opacity: 0;
+        }
     </style>
   </head>
   <body>
+    <div class="loading">
+        <svg viewbox='0 0 50 50'>
+            <circle r='25' cx='25' cy='25'></circle>
+        </svg>
+        <p>LOADING</p>
+    </div>
     <!-- 标题 -->
     <div class="title">
         <h1>Minecraft快速制作资源包工具</h1>
-        <button id="signInOut"><a href="signInOut.html">注册</a></button>
     </div>
 
-    <button id="use"><a href="app.html">开始线上使用-无需注册</a></button>
-    <h6>(注册后可以进行发布操作)</h6>
+    <button id="use"><p onclick="loading.in('app.html')"><span>开始</span>线上使用-无需注册</p></button>
     
     <!-- 主效果图 -->
     <div class="showEffect">
@@ -87,5 +128,6 @@ canvas {
             <p>简单易懂的界面</p>
         </div>
     </div>
+    <script src="js/index.js"></script>
   </body>
 </html>
