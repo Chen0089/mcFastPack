@@ -15,6 +15,7 @@
         }
         
         body {
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -30,7 +31,7 @@
         }
         
         .showEffectImage {
-            border-radius: 3px;
+            border-radius: 100%;
             width: 50%;
             display: inline-block;
             float: left;
@@ -42,6 +43,9 @@
             width: 50%;
             border: #ccc;
             float: right;
+            color: #f9fff9;
+            background-color: #f3fff3;
+            box-shadow: 10px, 10px, 5px, #888;
         }
         
         .showUiText {
@@ -49,11 +53,13 @@
             border-radius: 3px;
             width: 50%;
             border: #ccc;
+            color: #f9fff9;
             float: left;
+            box-shadow: 10px, 10px, 5px, #888;
         }
         
         .showUiImage {    
-            border-radius: 3px;
+            border-radius: 100%;
             width: 50%;
             display: inline-block;
             float: right;
@@ -65,8 +71,6 @@
         }
 
         .title {
-            margin-left: auto;
-            margin-right: auto;
             font-family: sans-serif;
             text-align: center;
             font-size: 10rem;
@@ -76,15 +80,10 @@
             background-color: #17f700;
             position: fixed;
             top: 0;
-            left: 0;
+            left: 35%;
             height: 30px;
             width: 70%;
             border-radius: 30px;
-        }
-
-        .title span {
-            font-size: 10rem;
-            color: #f7f7f7;
         }
 
         .loading {
